@@ -1,4 +1,6 @@
+const express = require('express')
 const app = express();
+
 const maIFia = [
     {id: 1, nome: 'Matheus Henrique', idade: 17, especialidade: 'Balatro e "Programas..."'},
     {id: 2, nome: 'Paz', idade: 16, especialidade: 'Furries e Limbus Company'},
@@ -24,11 +26,14 @@ app.get('/maIFia/:id', (req, res) => {
     let id = parseInt(req.params.id);
     let estudante = maIFia[id - 1];
     if (estudante) {
-        res.send('Nome: ' + estudante.nome + '<br>' + 'Idade: ' + estudante.idade + '<br>' + 'E SUA ESPECIALIDADES: ' + estudante.especialidade) ;   
+        res.send(```Nome: ${estudante.nome} 
+          Idade: ${estudante.idade} 
+          E SUAS ESPECIALIDADES:  ${estudante.especialidade}```) ;   
     }else {
-        res.send('Não foi encontrado o maIFia com o ID: ' + id)}
+        res.send('Não foi encontrado alguém do maIFia com o ID: ' + id)}
     })
 
 app.listen(3000, () => {
-  console.log('Busque pelos alunos usando http://localhost:3000/maIFia/3')
+  console.log('Renan é o aluno encontrado usando usando http://localhost:3000/maIFia/3')
+  console.log('Mas caso queira mudar, coloque o id do aluno que quer encontrar invés daquele "3"')
 })
